@@ -1,0 +1,75 @@
+/* ==========================================================================
+   PyOdyssey Design Tokens
+   Minimalist, rich, true black with restrained orange hairline accents.
+   ========================================================================== */
+
+:root {
+  /* Dark theme (default) */
+  --bg: #000000;
+  --surface: #0C0C0C;
+  --surface-high: #161616;
+  --line: #3A2412;
+  --accent: #FF7A1A;
+  --text: #F4F1EC;
+  --text-muted: #A8A29E;
+  --text-faint: #8A8A8A;
+  --spark: #FFC24B;
+  --pass: #6EE7B7;
+  --fail: #FF6B8B;
+  --fail-bg: #1F0D14;
+  --fail-border: #6B1F3A;
+
+  /* Typography */
+  --font-display: 'Bricolage Grotesque', system-ui, -apple-system, sans-serif;
+  --font-body: 'Instrument Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Spacing & Layout */
+  --header-h: 52px;
+  --radius-panel: 12px;
+  --radius-btn: 8px;
+  --radius-pill: 999px;
+  --gutter-w: 52px;
+
+  /* Code Syntax Highlighting */
+  --syn-keyword: #FF8A3D;
+  --syn-function: #7DD3FC;
+  --syn-string: #A7F3D0;
+  --syn-number: #FDE68A;
+  --syn-comment: var(--text-faint);
+  --syn-operator: #E7E5E4;
+}
+
+[data-theme='light'] {
+  --bg: #FAF7F2;
+  --surface: #FFFFFF;
+  --surface-high: #F1ECE4;
+  --line: #E6D9CB;
+  --accent: #D9540A;
+  --text: #1A1612;
+  --text-muted: #5E564E;
+  --text-faint: #78716C;
+  --spark: #B77A00;
+  --pass: #0F8A5F;
+  --fail: #C73458;
+  --fail-bg: #FFF1F4;
+  --fail-border: #F4C0CD;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme='dark']) {
+    --bg: #FAF7F2;
+    --surface: #FFFFFF;
+    --surface-high: #F1ECE4;
+    --line: #E6D9CB;
+    --accent: #D9540A;
+    --text: #1A1612;
+    --text-muted: #5E564E;
+    --text-faint: #78716C;
+    --spark: #B77A00;
+    --pass: #0F8A5F;
+    --fail: #C73458;
+    --fail-bg: #FFF1F4;
+    --fail-border: #F4C0CD;
+  }
+}

@@ -1,0 +1,300 @@
+/* ==========================================================================
+   PyOdyssey Code Editor Styles
+   Minimalist, precise, 15px JetBrains Mono, 52px gutter.
+   ========================================================================== */
+
+.code-editor {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--surface);
+  color: #E7E5E4;
+  font-family: var(--font-mono);
+  font-size: 15px;
+  line-height: 25.5px;
+  font-feature-settings: 'liga' 1, 'calt' 1;
+}
+
+.code-editor.is-focused {
+  outline: none;
+}
+
+.code-editor.is-readonly {
+  opacity: 0.85;
+}
+
+.editor-scroll {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* Layer (a): Current-line highlight (z-index: 1, behind all text) */
+.editor-active-line {
+  position: absolute;
+  left: var(--gutter-w);
+  right: 0;
+  height: 25.5px;
+  background: var(--surface-high);
+  pointer-events: none;
+  z-index: 1;
+  box-sizing: border-box;
+}
+
+.editor-active-line.has-issue {
+  border-left: 2px solid var(--fail);
+}
+
+/* Layer (b): Syntax-highlighted text (z-index: 2, above highlight) */
+.editor-canvas {
+  position: absolute;
+  top: 0;
+  left: var(--gutter-w);
+  right: 0;
+  bottom: 0;
+  padding: 0;
+  pointer-events: none;
+  z-index: 2;
+  box-sizing: border-box;
+}
+
+.editor-highlight {
+  position: relative;
+  margin: 0;
+  padding: 16px;
+  white-space: pre;
+  word-wrap: normal;
+  overflow-wrap: normal;
+  tab-size: 4;
+  color: #E7E5E4;
+  font-family: var(--font-mono);
+  font-size: 15px;
+  line-height: 25.5px;
+  letter-spacing: 0;
+  font-feature-settings: 'liga' 1, 'calt' 1;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+/* Syntax Tokens */
+.tok {
+  display: inline;
+}
+
+.tok-plain {
+  color: #E7E5E4;
+}
+
+.tok-keyword {
+  color: #FF8A3D;
+  font-weight: 500;
+}
+
+.tok-constant {
+  color: #FF8A3D;
+}
+
+.tok-function {
+  color: #7DD3FC;
+}
+
+.tok-string {
+  color: #A7F3D0;
+}
+
+.tok-number {
+  color: #FDE68A;
+}
+
+.tok-comment {
+  color: var(--text-faint);
+  font-style: italic;
+}
+
+.tok-builtin {
+  color: #7DD3FC;
+}
+
+.tok-classname {
+  color: #7DD3FC;
+}
+
+.tok-operator {
+  color: #E7E5E4;
+}
+
+.tok-decorator {
+  color: #FF8A3D;
+}
+
+.tok-self {
+  color: #FF8A3D;
+  font-style: italic;
+}
+
+/* Layer (gutter): 52px wide gutter (z-index: 3) */
+.editor-gutter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--gutter-w);
+  height: 100%;
+  background: var(--surface);
+  border-right: 1px solid var(--line);
+  padding: 16px 0;
+  user-select: none;
+  z-index: 3;
+  box-sizing: border-box;
+}
+
+.gutter-line {
+  height: 25.5px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 12px;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  box-sizing: border-box;
+  opacity: 1;
+}
+
+.gutter-line span {
+  color: var(--text-faint) !important;
+  opacity: 1 !important;
+}
+
+.gutter-line.has-error span {
+  color: var(--fail) !important;
+}
+
+.gutter-line.has-warning span {
+  color: var(--spark) !important;
+}
+
+.gutter-marker {
+  background: transparent;
+  border: 0;
+  color: var(--fail);
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0 4px;
+  font-size: 11px;
+}
+
+.gutter-marker.warning {
+  color: var(--spark);
+}
+
+/* Layer (c): Transparent Textarea over Highlighter (z-index: 4) */
+.editor-input,
+.editor-textarea {
+  position: absolute;
+  top: 0;
+  left: var(--gutter-w);
+  right: 0;
+  bottom: 0;
+  width: calc(100% - var(--gutter-w));
+  height: 100%;
+  padding: 16px;
+  margin: 0;
+  background: transparent;
+  color: transparent;
+  caret-color: var(--accent);
+  border: 0;
+  outline: none;
+  resize: none;
+  white-space: pre;
+  word-wrap: normal;
+  overflow-wrap: normal;
+  tab-size: 4;
+  overflow: auto;
+  font-family: var(--font-mono);
+  font-size: 15px;
+  line-height: 25.5px;
+  letter-spacing: 0;
+  font-feature-settings: 'liga' 1, 'calt' 1;
+  box-sizing: border-box;
+  z-index: 4;
+}
+
+.editor-input::selection {
+  background: rgba(255, 122, 26, 0.25);
+  color: transparent;
+}
+
+/* Placeholder */
+.editor-placeholder {
+  position: absolute;
+  top: 16px;
+  left: calc(var(--gutter-w) + 16px);
+  color: var(--text-faint);
+  pointer-events: none;
+  font-family: var(--font-mono);
+  font-size: 15px;
+  line-height: 25.5px;
+  z-index: 2;
+}
+
+.prompt-mark {
+  color: var(--accent);
+  margin-right: 6px;
+}
+
+.editor-caret-hint {
+  display: inline-block;
+  width: 8px;
+  height: 15px;
+  background: var(--accent);
+  vertical-align: middle;
+  margin-left: 4px;
+}
+
+/* Status Bar */
+.editor-statusbar {
+  height: 28px;
+  background: var(--surface-high);
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--text-muted);
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.editor-status-left,
+.editor-status-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--pass);
+}
+
+.status-sep {
+  color: var(--line);
+}
+
+.lint-count {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.lint-count.has-errors {
+  color: var(--fail);
+}

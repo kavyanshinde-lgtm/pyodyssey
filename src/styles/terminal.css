@@ -1,0 +1,69 @@
+/* ==========================================================================
+   PyOdyssey Tests, Terminal & Variables Panel
+   ========================================================================== */
+
+.terminal-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background: var(--surface);
+  color: var(--text);
+}
+
+.terminal-output {
+  margin: 0;
+  padding: 12px 16px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  color: var(--text);
+  overflow-y: auto;
+  height: 100%;
+}
+
+.terminal-error-block {
+  margin: 8px 16px;
+  padding: 10px 14px;
+  background: var(--fail-bg);
+  border: 1px solid var(--fail-border);
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 13px;
+}
+
+.terminal-error-block strong {
+  color: var(--fail);
+}
+
+/* Variables View */
+.variables-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+.variables-table th,
+.variables-table td {
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+}
+
+.variables-table th {
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--surface-high);
+}
+
+.variables-table td.var-name {
+  color: #7DD3FC;
+}
+
+.variables-table td.var-val {
+  color: var(--text);
+}
