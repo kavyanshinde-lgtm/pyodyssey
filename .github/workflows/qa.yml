@@ -14,6 +14,10 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npx playwright install chromium
+      - name: Restore Pyodide assets for Node tests
+        run: |
+          mkdir -p node_modules/pyodide
+          cp -R public/pyodide/. node_modules/pyodide/
       - run: npm test
       - run: npm run build
       - run: npm run css:check
