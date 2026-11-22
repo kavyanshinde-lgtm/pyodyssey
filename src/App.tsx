@@ -1619,7 +1619,7 @@ export default function App() {
         </div>
       ) : null}
 
-      <div className="screen-reader-status" aria-live="polite">
+      <div className="screen-reader-status" data-testid="engine-ready" data-engine-status={engine.status} aria-live="polite">
         {engine.status === 'ready' ? 'Python core ready.' : engine.message}
       </div>
     </div>

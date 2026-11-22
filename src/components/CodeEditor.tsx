@@ -472,6 +472,7 @@ export function CodeEditor({
         <textarea
           ref={textareaRef}
           className="editor-input"
+          data-testid="code-editor"
           value={value}
           onChange={handleChange}
           onKeyDown={handleKeyDown}

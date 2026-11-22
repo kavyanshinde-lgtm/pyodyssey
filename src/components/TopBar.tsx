@@ -63,6 +63,7 @@ export function TopBar({
       <div className="topbar-left">
         <button
           id="curriculum-toggle-btn"
+          data-testid="curriculum-toggle-button"
           type="button"
           className="btn btn-outlined"
           onClick={onToggleSidebar}
@@ -142,6 +143,7 @@ export function TopBar({
                 type="button"
                 className="menu-item"
                 role="menuitem"
+                data-testid="review-mode-button"
                 onClick={() => {
                   setMenuOpen(false);
                   onMode(mode === 'lesson' ? 'review' : 'lesson');
@@ -156,6 +158,7 @@ export function TopBar({
                 type="button"
                 className="menu-item"
                 role="menuitem"
+                data-testid={mode === 'sandbox' ? 'campaign-mode-button' : 'sandbox-mode-button'}
                 onClick={() => {
                   setMenuOpen(false);
                   onMode(mode === 'sandbox' ? 'lesson' : 'sandbox');
@@ -173,6 +176,7 @@ export function TopBar({
                 type="button"
                 className="menu-item"
                 role="menuitem"
+                data-testid="open-save-button"
                 onClick={() => {
                   setMenuOpen(false);
                   onOpenSave();

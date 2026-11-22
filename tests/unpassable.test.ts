@@ -10,7 +10,7 @@ describe('Item 1: Unpassable reference solutions', () => {
 
   beforeAll(async () => {
     const { loadPyodide } = await import('pyodide');
-    const indexURL = `${path.resolve('node_modules/pyodide')}\\`;
+    const indexURL = `${path.resolve('node_modules/pyodide')}${path.sep}`;
     pyodide = await loadPyodide({ indexURL });
     await pyodide.runPythonAsync(PYTHON_GRADER_SCRIPT);
   }, 120_000);

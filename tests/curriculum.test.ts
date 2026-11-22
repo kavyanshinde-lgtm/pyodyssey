@@ -105,7 +105,7 @@ describe('curriculum integrity', () => {
 describe('live Python execution', () => {
   it('runs every solution and validates output + structure', async () => {
     const { loadPyodide } = await import('pyodide');
-    const indexURL = `${path.resolve('node_modules/pyodide')}\\`;
+    const indexURL = `${path.resolve('node_modules/pyodide')}${path.sep}`;
     const pyodide = await loadPyodide({ indexURL });
     await pyodide.runPythonAsync(`
 import io, sys, builtins, json, traceback

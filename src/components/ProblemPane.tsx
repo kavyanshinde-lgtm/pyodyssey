@@ -176,9 +176,9 @@ export function ProblemPane({
     <div className="problem-pane">
       <div className="problem-header">
         <div className="problem-title-row">
-          <h1 className="problem-title">{lesson.title}</h1>
+          <h1 className="problem-title" data-testid="problem-title">{lesson.title}</h1>
           {isSolved ? (
-            <span className="problem-solved-badge">
+            <span className="problem-solved-badge" data-testid="solved-badge">
               <Icon name="check" size={13} />
               Solved
             </span>

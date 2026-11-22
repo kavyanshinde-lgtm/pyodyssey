@@ -87,7 +87,7 @@ export function RewardModal({ reward, onClose, onNext }: RewardModalProps) {
       </div>
 
       <div className="reward-actions">
-        <button type="button" className="btn btn-quiet" onClick={onClose}>
+        <button type="button" className="btn btn-quiet" data-testid="reward-stay-button" onClick={onClose}>
           Stay here
         </button>
         {nextLesson ? (

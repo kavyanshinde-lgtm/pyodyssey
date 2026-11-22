@@ -114,6 +114,7 @@ export function EditorPane({
             <button
               type="button"
               className="btn btn-outlined"
+              data-testid="run-only-button"
               onClick={onRunWithoutTests}
               disabled={isRunning}
               title="Run code without grading (Ctrl+Shift+Enter)"
@@ -124,6 +125,7 @@ export function EditorPane({
             <button
               type="button"
               className="btn btn-primary"
+              data-testid="run-tests-button"
               onClick={onRunTests}
               disabled={isRunning}
               title="Run test suite (Ctrl+Enter)"
@@ -154,6 +156,7 @@ export function EditorPane({
           <button
             type="button"
             className={`tests-tab-btn ${activeTab === 'tests' ? 'active' : ''}`}
+            data-testid="tests-tab-button"
             onClick={() => setActiveTab('tests')}
           >
             Tests {totalCount > 0 ? `${passingCount} of ${totalCount} passing` : ''}
@@ -162,6 +165,7 @@ export function EditorPane({
           <button
             type="button"
             className={`tests-tab-btn ${activeTab === 'output' ? 'active' : ''}`}
+            data-testid="output-tab-button"
             onClick={() => setActiveTab('output')}
           >
             Output
@@ -170,13 +174,14 @@ export function EditorPane({
           <button
             type="button"
             className={`tests-tab-btn ${activeTab === 'vars' ? 'active' : ''}`}
+            data-testid="variables-tab-button"
             onClick={() => setActiveTab('vars')}
           >
             Variables ({variables.length})
           </button>
         </div>
 
-        <div className="tests-body">
+        <div className="tests-body" data-testid="tests-panel-body">
           {activeTab === 'tests' && (
             <>
               {testResults.length > 0 ? (
@@ -188,7 +193,7 @@ export function EditorPane({
 
                   if (isPassing) {
                     return (
-                      <div key={t.id} className="test-row test-row-pass tick-transition">
+                      <div key={t.id} className="test-row test-row-pass tick-transition" data-testid="test-result-row" data-status="passed">
                         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                           <span className="test-status-icon" style={{ color: isTicked ? 'var(--pass)' : 'var(--text-faint)' }}>
                             {isTicked ? '✓' : '○'}
@@ -202,7 +207,7 @@ export function EditorPane({
 
                   // Failing row sits in rose-tinted box
                   return (
-                    <div key={t.id} className="test-row test-row-fail">
+                    <div key={t.id} className="test-row test-row-fail" data-testid="test-result-row" data-status="failed">
                       <div className="test-row-fail-head">
                         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                           <span className="test-status-icon">✕</span>
