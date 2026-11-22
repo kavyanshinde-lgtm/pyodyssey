@@ -10,7 +10,7 @@ describe('Migration Batch 4 (r7-3, r7-4, r7-5, r7-6, r8-1, r8-2, r8-3, r8-4)', (
 
   beforeAll(async () => {
     const { loadPyodide } = await import('pyodide');
-    const indexURL = `${path.resolve('node_modules/pyodide')}\\`;
+    const indexURL = `${path.resolve('node_modules/pyodide')}${path.sep}`;
     pyodide = await loadPyodide({ indexURL });
     await pyodide.runPythonAsync(PYTHON_GRADER_SCRIPT);
   }, 120_000);
