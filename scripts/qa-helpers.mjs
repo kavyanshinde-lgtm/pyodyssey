@@ -2,7 +2,10 @@ import assert from 'node:assert/strict';
 import { chromium } from 'playwright-core';
 
 export const BASE_URL = process.env.QA_BASE_URL ?? 'http://127.0.0.1:4177';
-const executablePath = process.env.PLAYWRIGHT_CHROMIUM_PATH ?? 'C:\\Users\\kavya\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe';
+const executablePath = process.env.PLAYWRIGHT_CHROMIUM_PATH ??
+  (process.platform === 'win32'
+    ? 'C:\\Users\\kavya\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe'
+    : chromium.executablePath());
 
 export async function openQaPage({ baseUrl = BASE_URL, clearStorage = true } = {}) {
   const browser = await chromium.launch({ headless: true, executablePath, args: ['--no-sandbox', '--disable-dev-shm-usage'] });
