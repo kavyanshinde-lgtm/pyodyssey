@@ -29,7 +29,7 @@ export function SandboxPanel({
   lines,
 }: SandboxPanelProps) {
   return (
-    <aside className="sandbox-panel">
+    <aside className="sandbox-panel" data-testid="sandbox-panel">
       <div className="sandbox-hero">
         <div className="sandbox-orb">
           <span className="sandbox-orb-ring ring-1" />
@@ -88,6 +88,7 @@ export function SandboxPanel({
               key={example.id}
               type="button"
               className={`sandbox-example ${activeExample === example.id ? 'active' : ''}`}
+              data-testid={`sandbox-example-${example.id}`}
               style={{ '--example-color': example.color } as CSSProperties}
               onClick={() => onLoadExample(example)}
             >
@@ -103,7 +104,7 @@ export function SandboxPanel({
       </div>
 
       <div className="sandbox-actions">
-        <button type="button" className="sandbox-run" onClick={onRun} disabled={!code.trim()}>
+        <button type="button" className="sandbox-run" data-testid="sandbox-run-button" onClick={onRun} disabled={!code.trim()}>
           <Icon name="play" size={15} /> RUN SANDBOX
         </button>
         <button type="button" className="sandbox-clear" onClick={onClear}>
@@ -113,7 +114,7 @@ export function SandboxPanel({
 
       <div className="sandbox-footer">
         <div className="sandbox-footer-links">
-          <button type="button" onClick={onOpenSave}><Icon name="save" size={12} /> SAVE / EXPORT</button>
+          <button type="button" data-testid="sandbox-open-save-button" onClick={onOpenSave}><Icon name="save" size={12} /> SAVE / EXPORT</button>
         </div>
       </div>
     </aside>

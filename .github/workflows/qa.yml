@@ -1,0 +1,30 @@
+name: PyOdyssey QA
+
+on:
+  push:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install chromium
+      - run: npm test
+      - run: npm run build
+      - run: npm run css:check
+      - name: Start production preview
+        run: npm run preview -- --host 127.0.0.1 > preview.log 2>&1 &
+      - name: Wait for preview
+        run: |
+          for attempt in {1..30}; do
+            curl --fail --silent http://127.0.0.1:4177/ > /dev/null && exit 0
+            sleep 1
+          done
+          cat preview.log
+          exit 1
+      - run: npm run qa:smoke -- --offline

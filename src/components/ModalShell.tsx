@@ -77,7 +77,7 @@ export function ModalShell({
           </div>
           <div className="modal-header-actions">
             {headerExtra}
-            <button type="button" className="modal-close" onClick={onClose} aria-label="Close">
+          <button type="button" className="modal-close" data-testid="modal-close-button" onClick={onClose} aria-label="Close">
               <Icon name="close" size={20} />
             </button>
           </div>

@@ -154,6 +154,7 @@ export function CurriculumPanel({
               key={entry.id}
               type="button"
               className={`lesson-item ${isActive ? 'active' : ''}`}
+              data-testid={`lesson-${entry.id}`}
               onClick={() => {
                 onSelectLesson(entry.id);
                 onClose();
